@@ -1,13 +1,15 @@
-<div>
+<body class="body">
+<div class="container">
   <h1>Repository Files</h1>
-<div>
+<div class ="input-group">
   <label for = "owner" >Owner:</label>
   <input id="owner" [value]="owner" #ownerInput placeholder="Enter owner name">
 </div>
-<div>
+<div class="input-group">
   <label for = "repo" >Repo:</label>
   <input id="repo" [value]="repo" #repoInput placeholder="Enter repo name"/>
 </div>
 <button >Fetch Files</button>
 <pre> {{ fileContent }}</pre>
 </div>
+</body>
