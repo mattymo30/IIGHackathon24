@@ -1,5 +1,6 @@
 import { Octokit } from "@octokit/rest";
 import OpenAI from "openai";
+import fs from 'fs';
 
 const octokit = new Octokit({ 
     auth: ''
@@ -89,5 +90,11 @@ function formatString(input){
 }
 
 function downloadFile(string, fileName) {
-    
+    fs.writeFile(fileName, string, (err) => {
+        if(err) {
+            console.error(err)
+        } else {
+            console.log(fileName)
+        }
+    })
 }
