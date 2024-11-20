@@ -5,22 +5,16 @@ import fs from 'fs';
 const octokit = new Octokit({ 
     auth: ''
   });
+
+
+async function readMeFile(string, chunkSize = 2048) {
+    const chunks = [];
+    for (let i= 0; i<fileContent.length; i+= chunkSize) {
+        chunks.push(string.substring(i, i + chunkSize ));
+    }
+    return chunks;
+}
   
-//   const result = await octokit.request("GET /repos/{owner}/{repo}", {
-//     owner: "mattymo30",
-//     repo: "IIGHackathon24",
-//   });
-
-// const result = await octokit.repos.getReadme({
-//     owner: "mattymo30",
-//     repo: "IIGHackathon24",
-//   });
-
-//   console.log(result)
-
-//   const content = Buffer.from(result.data.content, 'base64').toString('utf-8');
-//   console.log(content)
-
 async function getRepoFiles(owner,repo){
     try{
         const {data: repoContent} = await octokit.repos.getContent({
@@ -58,25 +52,25 @@ async function getRepoFiles(owner,repo){
     }
 }
 
-const output = await getRepoFiles('mattymo30', 'IIGHackathon24')
-
-
 
 const openai = new OpenAI({apiKey: ''});
 
-const completion = await openai.chat.completions.create({
-    model: "gpt-4o",
-    messages: [
-        { role: "system", content: "You are a senior software engineer." },
-        {
-            role: "user",
-            content: `generate file-wise documentation detailing the files functionality, protection mechanisms, enforced scopes, and implemented endpoints
-            the documents should be structured and easy to navigate and don't include the file contents ${JSON.stringify(output)}`,
-        },
-    ],
-});
+async function callOpenAi(output){
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o-mini",
+            messages: [
+                { role: "system", content: "You are a senior software engineer." },
+                {
+                    role: "user",
+                    content: `generate file-wise documentation detailing the files functionality, protection mechanisms, enforced scopes, and implemented endpoints
+                    the documents should be structured and easy to navigate and don't include the file contents ${JSON.stringify(output)}`,
+                },
+            ],
+        });
 
-downloadFile(formatString(completion.choices[0].message.content.toString()), 'formatted.md');
+    return completion.choices[0].message.content
+}
+
 
 function formatString(input){
     if(input === null){
@@ -98,3 +92,10 @@ function downloadFile(string, fileName) {
         }
     })
 }
+
+const output = await getRepoFiles('mattymo30', 'my-hello-world')
+
+const doc = await callOpenAi(output)
+
+downloadFile(formatString(doc), 'formated.md')
+
