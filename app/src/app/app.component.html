@@ -3,11 +3,11 @@
   <h1>Repository Files</h1>
 <div class ="input-group">
   <label for = "owner" >Owner:</label>
-  <input id="owner" [value]="owner" #ownerInput placeholder="Enter owner name">
+  <input id="owner" [value]="owner" #ownerInput placeholder="Enter owner name" (input)="onOwnerInputChange($event)">
 </div>
 <div class="input-group">
   <label for = "repo" >Repo:</label>
-  <input id="repo" [value]="repo" #repoInput placeholder="Enter repo name"/>
+  <input id="repo" [value]="repo" #repoInput placeholder="Enter repo name" (input)="onRepoInputChange($event)"/>
 </div>
 <button (click)="generateDocs()" >Fetch Files</button>
 <pre> {{ fileContent }}</pre>

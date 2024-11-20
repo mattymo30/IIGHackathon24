@@ -16,8 +16,21 @@ export class AppComponent {
 
   constructor (private repoService: RepoService) {}
 
+  onOwnerInputChange(event: Event): void {
+    const target = event.target as HTMLInputElement
+    this.owner = target.value;
+  }
+
+  onRepoInputChange(event: Event): void {
+    const target = event.target as HTMLInputElement
+    this.repo = target.value;
+  }
+
   generateDocs() {
-    
+    if (this.owner && this.repo) {
+      generateMdFile(this.owner, this.repo)
+    }
+
   }
 
 }
