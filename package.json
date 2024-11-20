@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@angular/cli": "^19.0.0",
     "@octokit/rest": "^21.0.2",
     "octokit": "^4.0.2",
     "openai": "^4.72.0"
