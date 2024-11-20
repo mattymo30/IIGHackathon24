@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RepoService } from './repo.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'app';
-}
+ 
+  owner: string = '';
+  repo: string = '';
+  fileContent: string = '';
+
+  constructor (private repoService: RepoService) {}
+
+
+  }
+
