@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RepoService } from './repo.service';
+import { generateMdFile } from '../../../ai/github'
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ export class AppComponent {
 
   constructor (private repoService: RepoService) {}
 
-
+  generateDocs() {
+    
   }
 
+}
