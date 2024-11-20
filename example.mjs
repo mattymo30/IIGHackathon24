@@ -7,7 +7,7 @@ const completion = await openai.chat.completions.create({
         { role: "system", content: "You are a helpful assistant." },
         {
             role: "user",
-            content: "Write a haiku about recursion in programming.",
+            content: "can you parse through this repository url: https://github.com/angeudybp/IIGHackathon24/tree/sample-branch and return the file names in it",
         },
     ],
 });
