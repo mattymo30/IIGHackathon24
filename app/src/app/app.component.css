@@ -55,3 +55,45 @@ body {
     margin: 0;
     padding: 0;
 }
+.markdown-output {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .markdown-output h1,
+  .markdown-output h2,
+  .markdown-output h3 {
+    font-weight: bold;
+  }
+  
+  .markdown-output ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .markdown-output a {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  /* Spinner style */
+.spinner {
+    border: 4px solid #f3f3f3; /* Light gray background */
+    border-top: 4px solid #3498db; /* Blue color for spinner */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+  }
+  
+  /* Animation for the spinner */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loading {
+    display: block;
+  }
+  
