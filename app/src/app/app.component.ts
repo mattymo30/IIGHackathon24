@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RepoService } from './repo.service';
-import { generateMdFile } from '../../../ai/github'
+import { generateMdFile } from '../../../ai/github';
+import { MarkdownService } from 'ngx-markdown';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
  
   owner: string = '';
   repo: string = '';
-  fileContent: string = '';
+  fileContent: string = '# Hello World!';
 
   constructor (private repoService: RepoService) {}
 
