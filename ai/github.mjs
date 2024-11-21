@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/rest";
 import OpenAI from "openai";
-import fs from 'fs';
+import { Buffer } from "buffer";
 
 const octokit = new Octokit({ 
     auth: ''
@@ -83,20 +83,19 @@ function formatString(input){
 
 }
 
-function downloadFile(string, fileName) {
-    fs.writeFile(fileName, string, (err) => {
-        if(err) {
-            console.error(err)
-        } else {
-            console.log(fileName)
-        }
-    })
+async function downloadFile(string, fileName) {
+    const file = new Blob([string],{type:'text/plain'});
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = fileName;
+    link.click();
+    link.remove();
 }
 
-export function generateMdFile(owner, repo) {
-    const output = getRepoFiles(owner, repo)
+export async function generateMdFile(owner, repo) {
+    const output = await getRepoFiles(owner, repo)
 
-    const doc = callOpenAi(output)
+    const doc = await callOpenAi(output)
 
     downloadFile(formatString(doc), 'formated.md')
 }
