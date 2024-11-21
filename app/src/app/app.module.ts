@@ -14,7 +14,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
         BrowserModule,
         HttpClientModule,
         MarkdownModule.forRoot({
-            loader: HttpClient
+            // loader: HttpClient
         })
     ],
     providers: [],
