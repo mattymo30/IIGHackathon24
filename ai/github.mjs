@@ -53,7 +53,7 @@ async function getRepoFiles(owner,repo){
 }
 
 
-const openai = new OpenAI({apiKey: ''});
+const openai = new OpenAI({apiKey: '', dangerouslyAllowBrowser:true});
 
 async function callOpenAi(output){
         const completion = await openai.chat.completions.create({
