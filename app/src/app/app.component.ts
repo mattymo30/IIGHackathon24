@@ -5,6 +5,7 @@ import OpenAI from 'openai';
 import { RepoService } from './repo.service';
 import { marked } from 'marked';
 import { CommonModule } from '@angular/common';
+import { Buffer } from "buffer";
 
 
 @Component({
@@ -127,6 +128,14 @@ export class AppComponent {
       const output = await this.getRepoFiles(owner, repo);
       const doc = await this.callOpenAi(output);
       this.output = this.formatString(doc) || '';
+      if(this.output !== ''){
+        const file = new Blob([this.output],{type:'text/plain'});
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(file);
+        link.download = 'output.txt';
+        link.click();
+        link.remove();
+      }
       
       const markdownHtml = await Promise.resolve(marked.parse(this.output));
       
