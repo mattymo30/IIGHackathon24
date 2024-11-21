@@ -1,0 +1,1 @@
+export declare function generateMdFile(owner, repo): void;
