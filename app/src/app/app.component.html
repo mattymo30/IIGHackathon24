@@ -3,13 +3,13 @@
   <h1>Repository Files</h1>
 <div class ="input-group">
   <label for = "owner" >Owner:</label>
-  <input #owner id="owner" [value]="owner" #ownerInput placeholder="Enter owner name" (input)="onOwnerInputChange($event)">
+  <input #ownerInput id="owner" [value]="owner" placeholder="Enter owner name" (input)="onOwnerInputChange($event)">
 </div>
 <div class="input-group">
   <label for = "repo" >Repo:</label>
-  <input #repo id="repo" [value]="repo" #repoInput placeholder="Enter repo name" (input)="onRepoInputChange($event)"/>
+  <input #repoInput id="repo" [value]="repo" placeholder="Enter repo name" (input)="onRepoInputChange($event)"/>
 </div>
-<button (click)="generateDocs(owner.value,repo.value)" >Fetch Files</button>
+<button (click)="generateDocs(ownerInput.value,repoInput.value)" >Fetch Files</button>
     <!-- Show the spinner when loading -->
 <div *ngIf="isLoading" class="spinner"></div>
 
