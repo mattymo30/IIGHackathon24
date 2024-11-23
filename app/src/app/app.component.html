@@ -1,19 +1,25 @@
-<body class="body">
-<div class="container">
-  <h1>Repository Files</h1>
-<div class ="input-group">
-  <label for = "owner" >Owner:</label>
-  <input #ownerInput id="owner" [value]="owner" placeholder="Enter owner name" (input)="onOwnerInputChange($event)">
-</div>
-<div class="input-group">
-  <label for = "repo" >Repo:</label>
-  <input #repoInput id="repo" [value]="repo" placeholder="Enter repo name" (input)="onRepoInputChange($event)"/>
-</div>
-<button (click)="generateDocs(ownerInput.value,repoInput.value)" >Fetch Files</button>
-    <!-- Show the spinner when loading -->
-<div *ngIf="isLoading" class="spinner"></div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="app.component.css">
+  </head>
+  <body class="body">
+    <div class="container">
+      <h1>RepoWizard &#129497</h1>
+    <div class ="input-group">
+      <label for = "owner" >Owner:</label>
+      <input #ownerInput id="owner" [value]="owner" placeholder="Enter owner name" (input)="onOwnerInputChange($event)">
+    </div>
+    <div class="input-group">
+      <label for = "repo" >Repo:</label>
+      <input #repoInput id="repo" [value]="repo" placeholder="Enter repo name" (input)="onRepoInputChange($event)"/>
+    </div>
+    <button (click)="generateDocs(ownerInput.value,repoInput.value)" >Fetch Files</button>
+        <!-- Show the spinner when loading -->
+    <div *ngIf="isLoading" class="spinner"></div>
 
-<!-- Show the rendered markdown when available -->
-<div *ngIf="!isLoading" [innerHTML]="renderedOutput"></div>
-</div>
-</body>
+    <!-- Show the rendered markdown when available -->
+    <div *ngIf="!isLoading" [innerHTML]="renderedOutput"></div>
+    </div>
+  </body>
+</html>

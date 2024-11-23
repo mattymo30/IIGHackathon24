@@ -3,7 +3,15 @@
     "description": "Extension to help generate documentation for your github repos",
     "version": "1.0.0",
     "manifest_version": 3,
+    "compilerOptions": {
+        "outDir": "./dist",      
+        "target": "ES6",         
+        "module": "ESNext",
+        "strict": true
+      },
     "action": {
       "default_popup": "app/src/app/app.component.html"
-    }
+    },
+    "include": ["./**/*.ts"],
+    "exclude": ["node_modules"]
   }
