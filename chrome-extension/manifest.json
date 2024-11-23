@@ -9,10 +9,10 @@
     "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["app.component.js"]
+      "js": ["./scripts/app.component.js"]
     }
   ],
     "action": {
-      "default_popup": "./app.component.html"
+      "default_popup": "./html/app.component.html"
     }
   }

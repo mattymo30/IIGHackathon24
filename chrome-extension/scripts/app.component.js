@@ -1,6 +1,6 @@
 import { Octokit } from '../node_modules/@octokit/rest/dist-web/index.js';
 import OpenAI from '../node_modules/openai/dist/browser/index.js';
-import { Buffer } from '../node_modules/buffer/index.js';
+import { Buffer } from 'buffer';
 import { marked } from '../node_modules/marked/lib/marked.esm.js';
 
 class AppComponent {
