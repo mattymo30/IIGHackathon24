@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="app.component.css">
+  </head>
+  <body class="body">
+    <div class="container">
+      <h1>RepoWizard &#129497</h1>
+    <div class ="input-group">
+      <label for = "owner" >Owner:</label>
+      <input #ownerInput id="owner" [value]="owner" placeholder="Enter owner name" (input)="onOwnerInputChange($event)">
+    </div>
+    <div class="input-group">
+      <label for = "repo" >Repo:</label>
+      <input #repoInput id="repo" [value]="repo" placeholder="Enter repo name" (input)="onRepoInputChange($event)"/>
+    </div>
+    <button (click)="genDocs(ownerInput.value,repoInput.value)" >Fetch Files</button>
+
+    <div id="spinner" class="spinner hidden"></div>
+
+    <div id="renderedOutput"></div>
+    </div>
+    <script src="app.component.js" type="module"></script>
+  </body>
+</html>
