@@ -1,0 +1,9 @@
+{
+    "name": "RepoWizard",
+    "description": "Extension to help generate documentation for your github repos",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "app/src/app/app.component.html"
+    }
+  }
